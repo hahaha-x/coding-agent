@@ -1,9 +1,9 @@
 import json
 
-# 工具注册字典，用来存储函数名和对应的真实Python函数
+#存储函数名和对应Python函数
 TOOL_FUNCTIONS = {}
 
-# 工具 Schema 列表，用来发给大模型告诉它有哪些工具可用
+#可用工具
 TOOL_SCHEMAS = []
 
 def register_tool(name, description, parameters):
