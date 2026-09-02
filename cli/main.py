@@ -2,9 +2,7 @@ from agent.loop import run_agent
 import sys
 
 def get_multiline_input():
-    print("=====================================")
-    print("||      Coding Agent Terminal      ||")
-    print("=====================================")
+    
     print("提示：回车为换行，ctrl+z为输入结束")
     print("请输入任务指令：")
 
@@ -22,7 +20,7 @@ if __name__ == "__main__":
     print("||      Coding Agent Terminal      ||")
     print("=====================================")
     
-    # 模拟用户的任务指令
+    #获得用户任务
     task=get_multiline_input()
 
     if not task:

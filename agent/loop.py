@@ -25,6 +25,9 @@ SYSTEM_PROMPT = """你是一个强大的本地编程智能体 (Coding Agent)。
 
 【四、 任务交付】
 10. 只有当你确认任务已经完全闭环（代码写完、测试跑通、Bug 修复完毕）后，才向用户回复“任务已完成”并总结你的操作。
+
+【五、 长期记忆机制】
+11. 记忆备忘录：当你需要跨任务保存重要结论、项目架构配置或用户偏好时，请主动调用 write_file 将信息记录到工作区根目录的 `.agent_memory.md` 文件中。每次接到新任务时，你应该优先考虑使用 read_file 读取该文件，以唤醒你的长期记忆。
 """
 
 def fix_dsml(content: str):
@@ -96,8 +99,9 @@ def run_agent(user_request: str, max_steps: int = 25):
                 print(response_msg.content)
                 break
 
-        
+        #大模型生成的是对象，在判断工具调用难以解析->h后续判断
         state.add_message(response_msg)
+        
 
         
         for tool_call in response_msg.tool_calls:
